@@ -183,7 +183,7 @@ export default class DropdownAlert extends Component {
       },
     });
   };
-  alertWithType = (type, title, message) => {
+  alertWithType = (type, title, message, data) => {
     if (validateType(type) == false) {
       return;
     }
@@ -197,6 +197,7 @@ export default class DropdownAlert extends Component {
     }
     if (this.props.replaceEnabled == false) {
       this.setState({
+        data: data,
         type: type,
         message: message,
         title: title,
@@ -228,6 +229,7 @@ export default class DropdownAlert extends Component {
         function() {
           if (self.state.isOpen == false) {
             self.setState({
+              data: data,
               type: type,
               message: message,
               title: title,
@@ -277,6 +279,7 @@ export default class DropdownAlert extends Component {
             }
             if (onClose) {
               var data = {
+                data: this.state.data,
                 type: this.state.type,
                 title: this.state.title,
                 message: this.state.message,
